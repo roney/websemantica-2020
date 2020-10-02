@@ -1,5 +1,5 @@
 # PORTAL SEMÂNTICO
-## Correlacionando fatores socioeconômico e de saneamento básico com casos suspeitos e confirmados de COVID-19 no estado do Ceará
+## Correlacionando fatores de saneamento básico com casos suspeitos e confirmados de COVID-19 no estado do Ceará
 
 ### Discentes
 * Jussara Teixeira de Araújo Gonçalves
@@ -22,7 +22,7 @@ Diante de tudo isso, esse trabalho tem como propósito investigar a relação do
 ![Alt text](img/arquitetura.png?raw=true "Arquitetura")
 
 ## Fontes de dados
-* Síntese de Indicadores Sociais (SIS)
+* Dados do IBGE sobre Pesquisa de Informações Básicas Municipais (MUNIC)
 * Dados do SUS sobre Síndrome Gripal (SG)
 
 ## Questões de Competências
