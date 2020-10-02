@@ -35,6 +35,140 @@ renda e qual relação com os casos confirmados de COVID 19?
 
 ## Vocabulário
 
+* sau: http://datasus.gov.br/owl 
+* ibge: https://www.ibge.gov.br/owl
+* loc: https://www.example.com/owl 
+
+**sau:Doenca**
+A classe Doenca é a classe que representa as doenças, por exemplo, diabetes, doenças respiratórias, Covid-19, etc.
+<br>**Propriedades:** rdsf:label
+
+**sau:Paciente**
+Subclasse de foaf:Agent, a classe Paciente representada o estado do Agent.
+<br>**Propriedades**: sau:id_paciente
+
+**sau:Profissional_da_Saude**
+S****ubclasse de Paciente, representa os pacientes que também são profissionais
+<br>**Propriedades**: sau:tipo_profissional
+
+**sau:Condicao**
+Classe que representa o estado de um Paciente, por exemplo, se apresenta fatores de risco como gravidez, idade avançada, etc.
+<br>**Propriedades**: rdsf:label
+
+
+**sau:Sintomas**
+<br>**Propriedades**: rdsf:label, sau:data_inicio_sintomas
+
+**sau:Sindrome_Gripal**
+<br>**Propriedades**: rdsf:label
+
+**sau:Teste**
+<br>**Propriedades**: sau:data_teste
+
+**sau:Tipo_Teste**
+<br>**Propriedades**: rdsf:label
+
+**sau:Resultado**
+<br>**Propriedades**: rdsf:label
+
+**sau:tipo_profissional**
+Propriedade que representa a especialidade do profissional de saúde
+
+**sau:data_teste**
+Data de realização do teste, representado na forma de string dd-mm-yyyy
+
+**sau:data_inicio_sintomas**
+Data do início dos sintomas relatados pelo paciente, representado na forma de string dd-mm-yyyy
+
+**sau:id_paciente**
+Número inteiro representando a identificação única do paciente
+
+sau:hasSintomas
+
+sau:hasCondição
+
+sau:hasDoenca 
+
+sau:fezTeste
+
+sau:fazParteDe
+
+
+
+
+
+**ibge:Saneamento_Basico** 
+<br>**Propriedades**: rdsf:label
+
+**ibge:Domicilio** 
+<br>**Propriedades**: ibge:quantidade_de_domicilios
+
+**ibge:Serviço**
+<br>**Propriedades**: rdsf:label
+
+**ibge:Registro_de_serviço** 
+<br>**Propriedades**: ibge: número_de_entidades_executoras, ibge: cobrança_de_serviço, ibge:orgão_municipal_gestor_do_serviço
+
+**ibge:Abastecimento_de_Agua** 
+<br>**Propriedades**: rdsf:label
+
+**ibge:Esgoto** 
+<br>**Propriedades**: rdsf:label
+
+**ibge:Urbana** 
+<br>**Propriedades**: rdsf:label
+
+**ibge:Area_de_abrangencia**
+<br>**Propriedades**: rdsf:label
+
+**ibge:Rural**
+<br>**Propriedades**: rdsf:label
+
+ibge:quantidade_de_domicilios
+
+ibge: número_de_entidades_executoras
+
+ibge: cobrança_de_serviço
+
+ibge:orgão_municipal_gestor_do_serviço
+
+ibge:fornece serviço
+
+ibge:tem_abrangencia_municipal
+
+ibge:hasLocalização
+
+
+
+**loc:Localização**
+<br>**Propriedades**: rdsf:label
+
+**loc:Municipio**
+<br>**Propriedades**: rdfs:label, loc:código, cep
+
+**loc:Bairro**
+<br>**Propriedades**: rdsf:label
+
+**loc:Microregiao**
+<br>**Propriedades**: rdsf:label, loc:código
+
+**loc:Mesoregiao**
+<br>**Propriedades**: loc:código
+
+**loc:Unidade_Federativa**
+<br>**Propriedades**: rdsf:label, loc:código
+
+**loc:Pais**
+<br>**Propriedades**: rdsf:label, loc:código
+
+
+loc:código
+
+loc:fazParteDe
+
+loc:cep
+
+
 ## Modelagem
 
 ## Ontologia de Domínio
