@@ -1,4 +1,4 @@
-# PORTAL SEMÂNTICO - WEBSEMÂNTICA 2020
+# PORTAL SEMÂNTICO
 ## Correlacionando fatores socioeconômico e de saneamento básico com casos suspeitos e confirmados de COVID-19 no estado do Ceará
 
 ### Discentes
