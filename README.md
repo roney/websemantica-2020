@@ -1,4 +1,5 @@
-# Correlacionando fatores socioeconômico e de saneamento básico com casos suspeitos e confirmados de COVID-19 no estado doCeará
+# PORTAL SEMÂNTICO - WEBSEMÂNTICA 2020
+## Correlacionando fatores socioeconômico e de saneamento básico com casos suspeitos e confirmados de COVID-19 no estado do Ceará
 
 ### Discentes
 * Jussara Teixeira de Araújo Gonçalves
@@ -17,25 +18,30 @@
 A pandemia de COVID-19 tem intrigado a comunidade científica que ainda busca respostas. Com acentuado número de infectados em todo o mundo, a busca por novas respostas e, consequentemente novos tratamentos, tem gerado uma corrida por novas descobertas. A análise de dados semânticos tem sido, durante os últimos anos, uma ferramenta muito poderosa para a descoberta de novos conhecimentos, aplicado em diversas áreas. Ferramenta essa já estudada no combate a COVID-19 através de diversos estudos [sermet2020semantic, guo2020cord19sts, alambo2020depressive]. O Ceará, um dos estados mais afetados pelo COVID-19, o cenário é ainda mais alarmante. Com PIB de apenas 2,11\%[pib], boa parte da população vive em situação socioeconômica precária, dificultando ainda mais métodos de prevenção que evitem a disseminação do coronavírus. 
 Diante de tudo isso, esse trabalho tem como propósito investigar a relação dos casos suspeitos e confirmados de COVID-19 com a situação socioeconômica e de higiene da região onde vivem.
 
-## Dados
+
+![Alt text](img/arquitetura.png?raw=true "Arquitetura")
+
+## Fontes de dados
 * Síntese de Indicadores Sociais (SIS)
 * Dados do SUS sobre Síndrome Gripal (SG)
 
 ## Questões de Competências
-
-
-## Arquitetura
-
+* QC1- Qual a relação entre os casos confirmados de COVID-19 e a situação de
+saneamento básico dos municípios?
+* QC 2 - Qual a relação entre os casos suspeitos e confirmados de COVID 19 e os fatores
+gênero e renda?
+* QC3- Quais municípios apresentaram maior fragilidade nos fatores de saneamento e
+renda e qual relação com os casos confirmados de COVID 19?
 
 ## Vocabulário
 
 ## Modelagem
 
-## Ontologia
+## Ontologia de Domínio
 
-## Gráfico de conhecimento
+## Integração Semântica (IS)
 
-## Visões exportadas
+## Resultados
 
 ## Referências
 
