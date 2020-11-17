@@ -48,7 +48,7 @@ renda e qual relação com os casos confirmados de COVID 19?
 
 ## 5 - Mapeamentos R2RML
 
-* Mapeamento IBGE: [mapeamento_ibge.ttl]({{file name='files/maps_ibge.ttl'}})
+* Mapeamento IBGE: [mapeamento_ibge.ttl]({file name='files/maps_ibge.ttl'})
 * Mapeamento SUS: [mapeamento_sus.ttl]({{file name='files/maps_sau.ttl'}})
 * Instâncias IBGE: [instancias_ibge.ttl]({{file name='files/instances_ibge.ttl'}})
 * Instâncias SUS: [instancias_sus.ttl]({{file name='files/instances_sau.ttl.zip'}})
