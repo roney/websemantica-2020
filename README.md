@@ -29,12 +29,11 @@ Diante de tudo isso, esse trabalho tem como propósito investigar a relação do
 
 
 ## 2 - Questões de Competências
-* QC1- Qual a relação entre os casos confirmados de COVID-19 e a situação de
-saneamento básico dos municípios?
-* QC 2 - Qual a relação entre os casos suspeitos e confirmados de COVID 19 e os fatores
-gênero e renda?
-* QC3- Quais municípios apresentaram maior fragilidade nos fatores de saneamento e
-renda e qual relação com os casos confirmados de COVID 19?
+* QC1 - Quais os municípios mais afetados pelo COVID-19 ?
+
+* QC2 - Qual a relação entre o abastecimento de água e os casos de COVID-19 ?
+
+* QC3 - Qual a relação entre o tratamento de esgoto e os casos de COVID-19 ?
 
 ## 3 - Tratamento dos Dados
 * Importação dos dados a partir de CSVs
