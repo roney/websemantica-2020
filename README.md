@@ -80,6 +80,59 @@ Diante de tudo isso, esse trabalho tem como propósito investigar a relação do
 ![Alt text](img/graph.jpeg?raw=true "Modelagem")
 
 
+* Consultas QC1 -- Municípios mais afetados pela COVID-19
+```
+ PREFIX sau: <http://datasus.gov.br/owl/>
+ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+ SELECT ?municipio_name (COUNT(*)AS ?paciente)
+ WHERE {
+     ?paciente sau:id_paciente ?id .
+     ?paciente sau:has_localizacao ?municipio .
+     ?municipio rdfs:label ?municipio_name .
+     ?paciente sau:has_teste ?teste .
+     ?teste  sau:has_resultado ?resultado .
+     ?resultado  rdfs:label "Positivo" .
+ }
+ GROUP BY ?municipio_name
+ ORDER BY ASC(?municipio_name)
+```
+* Consultas QC2 -- Municípios mais afetados pela COVID-19 x Distribuição de Água
+```
+  PREFIX sau: <http://datasus.gov.br/owl/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  SELECT ?municipio_name (COUNT(*)AS ?paciente)
+  WHERE {
+      ?paciente sau:id_paciente ?id .
+      ?paciente sau:has_teste ?teste .
+      ?teste  sau:has_resultado ?resultado .
+      ?resultado  rdfs:label "Positivo" .
+      ?paciente sau:has_localizacao ?municipio .
+      ?municipio rdfs:label ?municipio_name .
+      ?municipio sau:has_agua ?agua .
+      ?agua sau:abrangencia_urbana ?abrangencia . FILTER ( ?abrangencia >= 50 ) .
+  }
+  GROUP BY ?municipio_name
+  ORDER BY DESC(?paciente)
+```
+* Consultas QC3 -- Municípios mais afetados pela COVID-19 x Rede de Esgoto
+```
+  PREFIX sau: <http://datasus.gov.br/owl/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  SELECT ?municipio_name (COUNT(*)AS ?paciente)
+  WHERE {
+      ?paciente sau:id_paciente ?id .
+      ?paciente sau:has_teste ?teste .
+      ?teste  sau:has_resultado ?resultado .
+      ?resultado  rdfs:label "Positivo" .
+      ?paciente sau:has_localizacao ?municipio .
+      ?municipio rdfs:label ?municipio_name .
+      ?municipio sau:has_esgoto ?esgoto .
+      ?esgoto sau:abrangencia_urbana ?abrangencia . 
+      FILTER ( ?abrangencia >= 100 ) .
+  }
+  GROUP BY ?municipio_name
+  ORDER BY ASC(?municipio_name)
+```
 ## 8 - Resultados
 
 * Resultado QC1
