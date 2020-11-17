@@ -48,6 +48,13 @@ Diante de tudo isso, esse trabalho tem como propósito investigar a relação do
 
 ![Alt text](img/modelagem.jpeg?raw=true "Modelagem")
 
+### Ontologia
+
+![Alt text](img/ontologia.jpg?raw=true "Arquitetura")
+
+* <a href="files/ontologia_alvo_sau.owl" download>Ontologia Algo</a>
+
+
 ## 5 - Mapeamentos R2RML
 
 * <a href="files/maps_ibge.ttl" download>Mapeamento IBGE</a>

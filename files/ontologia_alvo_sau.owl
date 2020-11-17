@@ -1,0 +1,299 @@
+@prefix : <http://www.semanticweb.org/ontologiaalvo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ontologiaalvo> .
+
+<http://www.semanticweb.org/ontologiaalvo> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ontologiaalvo#faz_parte_de
+:faz_parte_de rdf:type owl:ObjectProperty ;
+              rdfs:domain :Bairro ;
+              rdfs:range :Municipio .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#has_agua
+:has_agua rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#has_bairro
+:has_bairro rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#has_condicao
+:has_condicao rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#has_esgoto
+:has_esgoto rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#has_localizacao
+:has_localizacao rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#has_resultado
+:has_resultado rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#has_sintoma
+:has_sintoma rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#has_teste
+:has_teste rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#has_tipo
+:has_tipo rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/ontologiaalvo#abrangencia_rural
+:abrangencia_rural rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#abrangencia_urbana
+:abrangencia_urbana rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#area_rural
+:area_rural rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#area_urbana
+:area_urbana rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#codigo_do_municipio
+:codigo_do_municipio rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Municipio ;
+                     rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#codigo_unidade_federativa
+:codigo_unidade_federativa rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :Municipio ;
+                           rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#data_inicio_sintomas
+:data_inicio_sintomas rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Sintomas ;
+                      rdfs:range xsd:date .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#data_teste
+:data_teste rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Teste ;
+            rdfs:range xsd:date .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#estado_teste
+:estado_teste rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Teste ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#id_paciente
+:id_paciente rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Paciente ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#unidade_federativa
+:unidade_federativa rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Municipio ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdf:type owl:DatatypeProperty .
+
+
+###  http://xmlns.com/foaf/0.1/age
+<http://xmlns.com/foaf/0.1/age> rdf:type owl:DatatypeProperty ;
+                                rdfs:domain :Paciente ;
+                                rdfs:range xsd:integer .
+
+
+###  http://xmlns.com/foaf/0.1/birthday
+<http://xmlns.com/foaf/0.1/birthday> rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain :Paciente ;
+                                     rdfs:range xsd:date .
+
+
+###  http://xmlns.com/foaf/0.1/gender
+<http://xmlns.com/foaf/0.1/gender> rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain :Paciente ;
+                                   rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ontologiaalvo#AbastecimentoDeAgua
+:AbastecimentoDeAgua rdf:type owl:Class ;
+                     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                       owl:onProperty :abrangencia_rural ;
+                                       owl:someValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :abrangencia_urbana ;
+                                       owl:someValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :area_rural ;
+                                       owl:someValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :area_urbana ;
+                                       owl:someValuesFrom xsd:string
+                                     ] ;
+                     owl:disjointWith :Esgoto .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#Bairro
+:Bairro rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :faz_parte_de ;
+                          owl:someValuesFrom :Municipio
+                        ] .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#Condicao
+:Condicao rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#Esgoto
+:Esgoto rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :abrangencia_rural ;
+                          owl:someValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :abrangencia_urbana ;
+                          owl:someValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :area_rural ;
+                          owl:someValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :area_urbana ;
+                          owl:someValuesFrom xsd:string
+                        ] .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#Municipio
+:Municipio rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :has_agua ;
+                             owl:someValuesFrom :AbastecimentoDeAgua
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :has_esgoto ;
+                             owl:someValuesFrom :Esgoto
+                           ] .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#Paciente
+:Paciente rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :has_bairro ;
+                            owl:someValuesFrom :Bairro
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :has_condicao ;
+                            owl:someValuesFrom :Condicao
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :has_localizacao ;
+                            owl:someValuesFrom :Municipio
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :has_sintoma ;
+                            owl:someValuesFrom :Sintomas
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :has_teste ;
+                            owl:someValuesFrom :Teste
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :has_bairro ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Bairro
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :has_localizacao ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Municipio
+                          ] .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#ProfissionalDaSaude
+:ProfissionalDaSaude rdf:type owl:Class ;
+                     rdfs:subClassOf :Paciente .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#Resultado
+:Resultado rdf:type owl:Class ;
+           rdfs:subClassOf :Teste .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#Sintomas
+:Sintomas rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :data_inicio_sintomas ;
+                            owl:someValuesFrom xsd:date
+                          ] .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#Teste
+:Teste rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :has_resultado ;
+                         owl:someValuesFrom :Resultado
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :has_tipo ;
+                         owl:someValuesFrom :TipoTeste
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :data_teste ;
+                         owl:someValuesFrom xsd:date
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :estado_teste ;
+                         owl:someValuesFrom xsd:string
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty rdfs:label ;
+                         owl:someValuesFrom xsd:string
+                       ] .
+
+
+###  http://www.semanticweb.org/ontologiaalvo#TipoTeste
+:TipoTeste rdf:type owl:Class ;
+           rdfs:subClassOf :Teste .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
