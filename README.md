@@ -48,11 +48,11 @@ Diante de tudo isso, esse trabalho tem como propósito investigar a relação do
 
 ## 4 - Modelagem da Ontologia
 
-![Alt text](img/modelagem.jpeg?raw=true "Modelagem")
+![Alt text](img/nova_modelagem.png?raw=true "Modelagem")
 
 ### Ontologia
 
-![Alt text](img/ontologia.jpg?raw=true "Arquitetura")
+![Alt text](img/ontologia.PNG?raw=true "Arquitetura")
 
 * <a href="files/ontologia_alvo_sau.owl" download>Ontologia Algo</a>
 
