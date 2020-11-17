@@ -1,5 +1,5 @@
 # PORTAL SEMÂNTICO
-## Correlacionando fatores de saneamento básico com casos suspeitos e confirmados de COVID-19 no estado do Ceará
+## Correlacionando fatores de saneamento básico com casos confirmados de COVID-19 no estado do Ceará
 
 ### Discentes
 * Jussara Teixeira de Araújo Gonçalves
