@@ -29,11 +29,11 @@ Diante de tudo isso, esse trabalho tem como propósito investigar a relação do
 
 
 ## 2 - Questões de Competências
-* QC1 - Quais os municípios mais afetados pelo COVID-19 ?
+* QC1 - Quais os municípios que apresentam maior quantidade de casos de COVID-19?
 
-* QC2 - Qual a relação entre o abastecimento de água e os casos de COVID-19 ?
+* QC2 - Qual a relação entre o serviço de abastecimento de água dos municípios e os casos de COVID-19?
 
-* QC3 - Qual a relação entre o tratamento de esgoto e os casos de COVID-19 ?
+* QC3 - Qual a relação entre a situação de esgoto sanitário de cada município e os casos confirmados COVID-19?
 
 ## 3 - Tratamento dos Dados
 * Importação dos dados a partir de CSVs
