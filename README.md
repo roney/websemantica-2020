@@ -15,13 +15,8 @@
 
 
 ## Resumo
-A pandemia de COVID-19 tem intrigado a comunidade científica que ainda busca respostas. Com acentuado número de infectados em todo o mundo, a busca por novas respostas e, consequentemente novos tratamentos, tem gerado uma corrida por novas descobertas. 
-A análise de dados semânticos tem sido, durante os últimos anos, uma ferramenta muito poderosa para a descoberta de novos conhecimentos, aplicado em diversas áreas. 
-Ferramenta essa já estudada no combate a COVID-19 através de diversos estudos [sermet2020semantic, guo2020cord19sts, alambo2020depressive]. O Ceará, um dos estados mais afetados pelo COVID-19, o cenário é ainda mais alarmante. Com PIB de apenas 2,11%[pib], boa parte da população vive em situação socioeconômica precária, dificultando ainda mais métodos de prevenção que evitem a disseminação do coronavírus. 
-Diante de tudo isso, esse trabalho tem como propósito investigar a relação dos casos suspeitos e confirmados de COVID-19 com a situação socioeconômica e de higiene da região onde vivem.
+A pandemia de COVID-19 tem intrigado a comunidade científica que ainda busca respostas. Com acentuado número de infectados em todo o mundo, a busca por novas respostas e, consequentemente novos tratamentos, tem gerado uma corrida por novas descobertas. A análise de dados semânticos tem sido, durante os últimos anos, uma ferramenta muito poderosa para a descoberta de novos conhecimentos, aplicado em diversas áreas. Ferramenta essa já estudada no combate a COVID-19 através de diversos estudos [sermet2020semantic, guo2020cord19sts, alambo2020depressive]. Diante de tudo isso, a realização deste trabalho teve como propósito investigar a relação dos casos confirmados de COVID-19 com a situação de sanemaneto básico (abastecimento de água e esgoto sanitário) dos municípios do Ceará. Com isso, a elaboração do presente portal visa  disponibilizar acesso as informações e resultados desse estudo e trabalho realizado.
 
-
-![Alt text](img/arquitetura.png?raw=true "Arquitetura")
 
 ## 1 - Fontes de dados
 * Dados do IBGE sobre Pesquisa de Informações Básicas Municipais (MUNIC)
@@ -82,59 +77,6 @@ Diante de tudo isso, esse trabalho tem como propósito investigar a relação do
 ![Alt text](img/graph.jpeg?raw=true "Modelagem")
 
 
-* Consultas QC1 -- Municípios mais afetados pela COVID-19
-```
- PREFIX sau: <http://datasus.gov.br/owl/>
- PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
- SELECT ?municipio_name (COUNT(*)AS ?paciente)
- WHERE {
-     ?paciente sau:id_paciente ?id .
-     ?paciente sau:has_localizacao ?municipio .
-     ?municipio rdfs:label ?municipio_name .
-     ?paciente sau:has_teste ?teste .
-     ?teste  sau:has_resultado ?resultado .
-     ?resultado  rdfs:label "Positivo" .
- }
- GROUP BY ?municipio_name
- ORDER BY ASC(?municipio_name)
-```
-* Consultas QC2 -- Municípios mais afetados pela COVID-19 x Distribuição de Água
-```
-  PREFIX sau: <http://datasus.gov.br/owl/>
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  SELECT ?municipio_name (COUNT(*)AS ?paciente)
-  WHERE {
-      ?paciente sau:id_paciente ?id .
-      ?paciente sau:has_teste ?teste .
-      ?teste  sau:has_resultado ?resultado .
-      ?resultado  rdfs:label "Positivo" .
-      ?paciente sau:has_localizacao ?municipio .
-      ?municipio rdfs:label ?municipio_name .
-      ?municipio sau:has_agua ?agua .
-      ?agua sau:abrangencia_urbana ?abrangencia . FILTER ( ?abrangencia >= 50 ) .
-  }
-  GROUP BY ?municipio_name
-  ORDER BY DESC(?paciente)
-```
-* Consultas QC3 -- Municípios mais afetados pela COVID-19 x Rede de Esgoto
-```
-  PREFIX sau: <http://datasus.gov.br/owl/>
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  SELECT ?municipio_name (COUNT(*)AS ?paciente)
-  WHERE {
-      ?paciente sau:id_paciente ?id .
-      ?paciente sau:has_teste ?teste .
-      ?teste  sau:has_resultado ?resultado .
-      ?resultado  rdfs:label "Positivo" .
-      ?paciente sau:has_localizacao ?municipio .
-      ?municipio rdfs:label ?municipio_name .
-      ?municipio sau:has_esgoto ?esgoto .
-      ?esgoto sau:abrangencia_urbana ?abrangencia . 
-      FILTER ( ?abrangencia >= 100 ) .
-  }
-  GROUP BY ?municipio_name
-  ORDER BY ASC(?municipio_name)
-```
 ## 8 - Resultados
 
 * Resultado QC1
