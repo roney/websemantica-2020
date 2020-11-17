@@ -53,6 +53,7 @@ renda e qual relação com os casos confirmados de COVID 19?
 * Instâncias IBGE: [instancias_ibge.ttl]({{file name='files/instances_ibge.ttl'}})
 * Instâncias SUS: [instancias_sus.ttl]({{file name='files/instances_sau.ttl.zip'}})
 
+<a href="files/instances_sau.ttl.zip" download>Instâncias SUS</a>
 ## 6 - Links sameAS
 
 * silk-workbench-v3.2.0
