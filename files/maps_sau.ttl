@@ -1,0 +1,193 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix sau: <http://datasus.gov.br/owl/>.
+
+
+<#TriplesMapCondicao>
+    rr:logicalTable [ rr:sqlQuery "SELECT id, label FROM sau_condicao" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/condicao/{id}";
+        rr:class sau:Condicao;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [ rr:column "label" ];
+    ].
+    
+<#TriplesMapSintomas>
+    rr:logicalTable [ rr:sqlQuery "SELECT id, label,data_inicio_sintomas FROM sau_sintomas" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/sintomas/{id}";
+        rr:class sau:Sintomas;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [ rr:column "label" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sau:data_inicio_sintomas;
+        rr:objectMap [ rr:column "data_inicio_sintomas" ];
+    ].
+    
+<#TriplesTipoTeste>
+    rr:logicalTable [ rr:sqlQuery "SELECT id, label FROM sau_teste_tipo" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/teste_tipo/{id}";
+        rr:class sau:TipoTeste;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [ rr:column "label"];
+    ].
+    
+<#TriplesResultado>
+    rr:logicalTable [ rr:sqlQuery "SELECT id, label FROM sau_teste_resultado" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/teste_resultado/{id}";
+        rr:class sau:Resultado;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [ rr:column "label"];   
+    ].
+    
+<#TriplesTeste>
+    rr:logicalTable [ rr:sqlQuery "SELECT teste.id, data_teste, estado_teste, teste_tipo_id, teste_resultado_id, tipo.id as tipo_id, resultado.id as resultado_id FROM sau_teste as teste INNER JOIN sau_teste_tipo AS tipo ON teste.teste_tipo_id = tipo.id INNER JOIN sau_teste_resultado AS resultado ON teste.teste_resultado_id = resultado.id" ];
+    rr:subjectMap [ 
+        rr:template "http://datasus.gov.br/owl/teste/{id}";
+        rr:class sau:Teste;
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:data_teste;
+        rr:objectMap [ rr:column "data_teste" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sau:estado_teste;
+        rr:objectMap [ rr:column "estado_teste" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sau:has_tipo;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/teste_tipo/{tipo_id}" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sau:has_resultado;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/teste_resultado/{resultado_id}" ];
+    ].
+    
+<#TriplesMapProfissionalDaSaude>
+    rr:logicalTable [ rr:sqlQuery "SELECT id, label FROM sau_tipo_profissional" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/tipo_profissional/{id}";
+        rr:class sau:ProfissionalDaSaude;
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [ rr:column "label"]; 
+    ].
+  
+  
+  <#TriplesBairro>
+    rr:logicalTable [ rr:sqlQuery "SELECT bairro.id, bairro.label, municipio.id as municipio_id FROM loc_bairro as bairro INNER JOIN loc_municipio AS municipio ON municipio.id = bairro.municipio_id" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/bairro/{id}";
+        rr:class sau:Bairro;
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [ rr:column "label"]; 
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:faz_parte_de;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/municipio/{municipio_id}" ];
+    ].
+    
+  <#TriplesMapMunicipio>
+    rr:logicalTable [ rr:sqlQuery "SELECT id, label, codigo, unidade_federativa, unidade_federativa_codigo FROM loc_municipio" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/municipio/{id}";
+        rr:class sau:Municipio;
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [ rr:column "label"]; 
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:codigo_do_municipio;
+        rr:objectMap [ rr:column "codigo"]; 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sau:unidade_federativa;
+        rr:objectMap [ rr:column "unidade_federativa"]; 
+        
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate sau:codigo_unidade_federativa;
+        rr:objectMap [ rr:column "unidade_federativa_codigo"]; 
+
+    ].
+    
+    
+<#TriplesPaciente>
+    rr:logicalTable [ rr:sqlQuery "SELECT paciente.id, id_paciente, idade, data_nascimento, genero, tipo_profissional_id, teste_id, paciente.municipio_id, bairro_id, condicoes.condicao_id as condicao_id, sintomas.sintoma_id as sintoma_id, profissional.id as profissional_id FROM sau_paciente as paciente INNER JOIN loc_bairro AS bairro ON bairro.id = paciente.bairro_id INNER JOIN loc_municipio AS municipio ON municipio.id = paciente.municipio_id INNER JOIN sau_paciente_condicoes AS condicoes ON condicoes.paciente_id = paciente.id INNER JOIN sau_paciente_sintomas AS sintomas ON sintomas.paciente_id = paciente.id INNER JOIN sau_tipo_profissional AS profissional ON profissional.id = paciente.tipo_profissional_id INNER JOIN sau_teste AS teste ON teste.id = paciente.teste_id" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/paciente/{id}";
+        rr:class sau:Paciente;
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:id_paciente;
+        rr:objectMap [ rr:column "id_paciente"]; 
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate foaf:age;
+        rr:objectMap [ rr:column "idade"];
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate foaf:birthday;
+        rr:objectMap [ rr:column "data_nascimento"];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate foaf:gender;
+        rr:objectMap [ rr:column "genero"];
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:is_profissional;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/tipo_profissional/{profissional_id}" ];
+    ];
+        
+    rr:predicateObjectMap [
+        rr:predicate sau:has_condicao;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/condicao/{condicao_id}"];
+    ];
+        
+    rr:predicateObjectMap [
+        rr:predicate sau:has_sintoma;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/sintoma/{sintoma_id}"];
+    ];
+        
+    rr:predicateObjectMap [
+        rr:predicate sau:has_teste;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/teste/{teste_id}" ];
+    ];
+        
+    rr:predicateObjectMap [
+        rr:predicate sau:has_localizacao;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/municipio/{municipio_id}" ];
+    ];
+        
+    rr:predicateObjectMap [
+        rr:predicate sau:has_bairro;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/bairro/{bairro_id}" ];
+    ].
+        

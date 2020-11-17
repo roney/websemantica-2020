@@ -1,0 +1,123 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix sau: <http://datasus.gov.br/owl/>.
+
+  
+<#TriplesBairro>
+    rr:logicalTable [ rr:sqlQuery "SELECT bairro.id, bairro.label, municipio.id as municipio_id FROM loc_bairro as bairro INNER JOIN loc_municipio AS municipio ON municipio.id = bairro.municipio_id" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/bairro/{id}";
+        rr:class sau:Bairro;
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [ rr:column "label"]; 
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:faz_parte_de;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/municipio/{municipio_id}" ];
+    ].
+    
+    
+<#TriplesMapAbastecimentodeagua>
+    rr:logicalTable [ rr:sqlQuery "SELECT id, area_rural, abrangencia_rural, area_urbana, abrangencia_urbana FROM ibge_abastecimento_de_agua" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/abastecimento_de_agua/{id}";
+        rr:class sau:AbastecimentoDeAgua;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sau:area_rural;
+        rr:objectMap [ rr:column "area_rural" ] 
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:abrangencia_rural;
+        rr:objectMap [ rr:column "abrangencia_rural"]   
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:area_urbana;
+        rr:objectMap [ rr:column "area_urbana"]   
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:abrangencia_urbana;
+        rr:objectMap [ rr:column "abrangencia_urbana"]   
+    ].
+    
+<#TriplesMapEsgoto>
+    rr:logicalTable [ rr:sqlQuery "SELECT id, area_rural, abrangencia_rural, area_urbana, abrangencia_urbana, orgao_municipal_gestor_do_servico FROM ibge_esgoto" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/esgoto/{id}";
+        rr:class sau:Esgoto;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sau:area_rural;
+        rr:objectMap [ rr:column "area_rural" ] 
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:abrangencia_rural;
+        rr:objectMap [ rr:column "abrangencia_rural" ]  
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:area_urbana;
+        rr:objectMap [ rr:column "area_urbana" ]  
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:abrangencia_urbana;
+        rr:objectMap [ rr:column "abrangencia_urbana" ]  
+    ];
+    
+   rr:predicateObjectMap [
+        rr:predicate sau:orgao_municipal_gestor_do_servico;
+        rr:objectMap [ rr:column "orgao_municipal_gestor_do_servico" ] 
+    ].
+    
+    
+  <#TriplesMapMunicipio>
+    rr:logicalTable [ rr:sqlQuery "SELECT municipio.id, label, codigo, unidade_federativa, unidade_federativa_codigo, servico.id as servico_id, esgoto.id as esgoto_id, agua.id as agua_id FROM loc_municipio as municipio INNER JOIN ibge_servico AS servico ON municipio.id = servico.municipio_id INNER JOIN ibge_esgoto AS esgoto ON servico.esgoto_id = esgoto.id INNER JOIN ibge_abastecimento_de_agua AS agua ON servico.abastecimento_de_agua_id = agua.id" ];
+    rr:subjectMap [
+        rr:template "http://datasus.gov.br/owl/municipio/{id}";
+        rr:class sau:Municipio;
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [ rr:column "label"]; 
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:codigo_do_municipio;
+        rr:objectMap [ rr:column "codigo"]; 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sau:unidade_federativa;
+        rr:objectMap [ rr:column "unidade_federativa"]; 
+        
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sau:has_servico;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/servico/{servico_id}" ];
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:has_esgoto;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/esgoto/{esgoto_id}" ];
+    ];
+    
+    rr:predicateObjectMap [
+        rr:predicate sau:has_agua;
+        rr:objectMap [ rr:template "http://datasus.gov.br/owl/abastecimento_de_agua/{agua_id}" ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate sau:codigo_unidade_federativa;
+        rr:objectMap [ rr:column "unidade_federativa_codigo"];  
+    ].
+       

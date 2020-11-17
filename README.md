@@ -21,11 +21,11 @@ Diante de tudo isso, esse trabalho tem como propósito investigar a relação do
 
 ![Alt text](img/arquitetura.png?raw=true "Arquitetura")
 
-## Fontes de dados
+## 1 - Fontes de dados
 * Dados do IBGE sobre Pesquisa de Informações Básicas Municipais (MUNIC)
 * Dados do SUS sobre Síndrome Gripal (SG)
 
-## Questões de Competências
+## 2 - Questões de Competências
 * QC1- Qual a relação entre os casos confirmados de COVID-19 e a situação de
 saneamento básico dos municípios?
 * QC 2 - Qual a relação entre os casos suspeitos e confirmados de COVID 19 e os fatores
@@ -33,11 +33,89 @@ gênero e renda?
 * QC3- Quais municípios apresentaram maior fragilidade nos fatores de saneamento e
 renda e qual relação com os casos confirmados de COVID 19?
 
+## 3 - Tratamento dos Dados
+* Importação dos dados a partir de CSVs
+![Alt text](img/csv.jpeg?raw=true "Arquivos CSV")
+
+* Transformação para dados relacionais
+
+![Alt text](img/modelagem.png?raw=true "Modelagem")
+
+
+## 4 - Modelagem da Ontologia
+
+![Alt text](img/modelagem.jpeg?raw=true "Modelagem")
+
+## 5 - Mapeamentos R2RML
+
+* Mapeamento IBGE: [mapeamento_ibge.ttl]({{file name='files/maps_ibge.ttl'}})
+* Mapeamento SUS: [mapeamento_sus.ttl]({{file name='files/maps_sau.ttl'}})
+* Instâncias IBGE: [instancias_ibge.ttl]({{file name='files/instances_ibge.ttl'}})
+* Instâncias SUS: [instancias_sus.ttl]({{file name='files/instances_sau.ttl.zip'}})
+
+## 6 - Links sameAS
+
+* silk-workbench-v3.2.0
+
+![Alt text](img/linke1.jpeg?raw=true "Modelagem")
+
+![Alt text](img/link2.jpeg?raw=true "Modelagem")
+
+![Alt text](img/link3.jpeg?raw=true "Modelagem")
+
+## 7 - GraphDB
+
+* Importação das bases de dados
+![Alt text](img/graph_imports.jpeg?raw=true "Modelagem")
+
+* Execução das consultas SPARQL
+![Alt text](img/graph.jpeg?raw=true "Modelagem")
+
+
+## 8 - Resultados
+
+* Resultado QC1
+![Alt text](img/resultado1.jpg?raw=true "Resultado")
+
+* Resultado QC1
+![Alt text](img/resultado2.jpg?raw=true "Resultado")
+
+* Resultado QC1
+![Alt text](img/resultado3.jpg?raw=true "Resultado")
+
+* Resultado QC2
+![Alt text](img/resultado4.jpg?raw=true "Resultado")
+
+* Resultado QC3
+![Alt text](img/resultado5.jpg?raw=true "Resultado")
+
+* Resultados
+![Alt text](img/resultado6.jpg?raw=true "Resultado")
+
+* Resultados
+![Alt text](img/resultado7.jpg?raw=true "Resultado")
+
+
+* Resultados
+![Alt text](img/resultado8.jpg?raw=true "Resultado")
+
+
+* Resultados
+![Alt text](img/resultado9.jpg?raw=true "Resultado")
+
+* Resultados
+![Alt text](img/resultado10.jpg?raw=true "Resultado")
+
+* Resultados
+![Alt text](img/resultado11.jpg?raw=true "Resultado")
+
+
+
 ## Vocabulário
 
 * sau: http://datasus.gov.br/owl 
 * ibge: https://www.ibge.gov.br/owl
-* loc: https://www.example.com/owl 
+* loc: https://www.localizacao.com/owl 
 
 **sau:Doenca**
 A classe Doenca é a classe que representa as doenças, por exemplo, diabetes, doenças respiratórias, Covid-19, etc.
