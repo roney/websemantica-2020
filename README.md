@@ -23,7 +23,10 @@ Diante de tudo isso, esse trabalho tem como propósito investigar a relação do
 
 ## 1 - Fontes de dados
 * Dados do IBGE sobre Pesquisa de Informações Básicas Municipais (MUNIC)
+  * Dados referentes aos anos de 2017 e 2018
 * Dados do SUS sobre Síndrome Gripal (SG)
+  * Dados referentes aos meses de março a início de agosto de 2020.
+
 
 ## 2 - Questões de Competências
 * QC1- Qual a relação entre os casos confirmados de COVID-19 e a situação de
