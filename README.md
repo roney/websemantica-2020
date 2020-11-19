@@ -76,6 +76,10 @@ A pandemia de COVID-19 tem intrigado a comunidade científica que ainda busca re
 * Execução das consultas SPARQL
 ![Alt text](img/graph.jpeg?raw=true "Modelagem")
 
+* Total de Declarações
+![Alt text](img/resumo.jpeg?raw=true "Modelagem")
+
+
 
 ## 8 - Resultados
 
