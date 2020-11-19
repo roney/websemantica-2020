@@ -79,6 +79,12 @@ A pandemia de COVID-19 tem intrigado a comunidade científica que ainda busca re
 * Total de Declarações
 ![Alt text](img/resumo.jpeg?raw=true "Modelagem")
 
+* Dependências
+![Alt text](img/dependencies.svg?raw=true "Modelagem")
+
+* Hierarquia
+![Alt text](img/hierarquia.jpg?raw=true "Modelagem")
+
 
 
 ## 8 - Resultados
